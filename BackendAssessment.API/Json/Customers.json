@@ -1,0 +1,32 @@
+[
+	{
+		"Id": "c66b2e07-8329-4fb7-8070-b0ecf66ac21f",
+		"Email": "SingaporePalau@gmail.com",
+		"PhoneNumber": "08123456543",
+		"Password": "7064ba57033e8f0854454ab8797f299a220a373a1ddc90b8499ccaf9ec7acef1", //Eqw123@
+		"OTP": "135791",
+		"OPTExpiresAt": "7/12/2022 1:02:39 AM",
+		"State": "Abia",
+		"LGA": "Aba North"
+	},
+	{
+		"Id": "64a93770-50a3-4f82-875f-50897b672e19",
+		"Email": "BoothGriffith@gmail.com",
+		"PhoneNumber": "08123456789",
+		"Password": "c2fcb2913f06b64bf72dd17a1674a1202903906136ee8068b97930a086497aa1", //Poiu@123
+		"OTP": "135721",
+		"OPTExpiresAt": "7/12/2022 1:04:39 AM",
+		"State": "Federal Capital Territory",
+		"LGA": "Abaji"
+	},
+	{
+		"Id": "34170d46-5c78-4e18-9bad-2df1214905dd",
+		"Email": "YeseniaSargent@gmail.com",
+		"PhoneNumber": "08123456008",
+		"Password": "7664b628c80ea41692efcb2d68d6433c2c707662fc35ab870455288015fcb908", //Bhg123@
+		"OTP": "135432",
+		"OPTExpiresAt": "7/12/2022 1:08:39 AM",
+		"State": "Ogun",
+		"LGA": "Abeokuta North"
+	}
+]
