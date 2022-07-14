@@ -15,11 +15,14 @@ namespace BackendAssessment.API.Controllers
         {
             _bankServices = bankServices;
         }
-        [HttpGet]
+        [HttpGet("GetAllBanks")]
         public async Task<IActionResult> GetBanksAsync()
         {
-          var result =  await _bankServices.GetbankRequest();
-            return Ok(result);
+     
+                var result = await _bankServices.GetbankRequest();
+                return Ok(result);
+            
+
         }
     }
 }

@@ -18,14 +18,14 @@ namespace BackendAssessment.API.Controllers
         }
 
 
-        [HttpPost]
+        [HttpPost("OnboardCustomer")]
         public async Task<IActionResult> Post(CustomerRegRequestDTO customer)
         {
             var result = await _customerServices.OnboardCustomer(customer);
             return Ok(result);
         }
 
-        [HttpGet]
+        [HttpGet("GetAllBoardedCustomer")]
         public async Task<IActionResult> Get()
         {
             var result = await _customerServices.GetAllBoardedCustomer();

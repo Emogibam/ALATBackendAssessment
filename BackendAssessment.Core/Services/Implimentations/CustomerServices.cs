@@ -61,8 +61,6 @@ namespace BackendAssessment.Core.Services.Implimentations
                     var smsResponse = _sendOTPSms.Setup(x => x.SendOptBySms(customer.PhoneNumber, opt)).Returns("success");
 
                     //
-                    SendOTPSms sendOTPSms = new SendOTPSms(_configuration);
-                    sendOTPSms.SendOptBySms(customer.PhoneNumber, opt);
 
                     bool isCumstomerOnboard = await _customerRepository.OnboardCustomerAsync(customer);
 
