@@ -28,59 +28,42 @@ namespace BackendAssessment.Core.Services.Implimentations
 
         public async Task<ApiResponse<ListBanksDTO>> GetbankRequest()
         {
-            var client = new RestClient("https://wema-alatdev-apimgt.developer.azure-api.net/api-details#api=alat-tech-test-api");
-
-            var reponse = client.Execute<ListBanksDTO>(new RestRequest());
-
-            //var client = new HttpClient();
-
-            //var resultConfig = _configuration.Value;
-            //// RequestMessage headers
-            //var request = new HttpRequestMessage
-            //{
-            //    RequestUri = new Uri("https://wema-alatdev-apimgt.azure-api.net/alat-test/api/Shared/GetAllBanks"),
-            //    Method = HttpMethod.Get,
-            //    Headers =
-            //    {
-            //        { "Ocp-Apim-Subscription-Key", "7e9831430436453d84e13097385e5afa" }
-            //    },
-            //};
-
-            //using var response = await client.SendAsync(request);
-            //response.EnsureSuccessStatusCode();
-            //if (response.IsSuccessStatusCode)
-            //{
-            //    var res = await response.Content.ReadAsStringAsync();
-            //    var serializer = new JsonSerializer();
-            //    using var stringReader = new StringReader(res);
-            //    using (var jsonReader = new JsonTextReader(stringReader))
-            //    {
-            //        jsonReader.SupportMultipleContent = true;
-            //        ListBanksDTO result = serializer.Deserialize<ListBanksDTO>(jsonReader);
-            //        return new ApiResponse<ListBanksDTO>((int)response.StatusCode, "success", "")
-            //        {
-            //            Data = result
-            //        };
-            //    };
-            //}
-            //throw new Exception("Server Error");
 
 
-            //ListBanksDTO listOfBanks = new();
-            //using (var httpClient = new HttpClient(_clientHandler))
-            //{
-            //    using (var response = await httpClient.GetAsync("https://wema-alatdev-apimgt.developer.azure-api.net/api-details#api=alat-tech-test-api"))
-            //    {
-            //        string apiResponse = await response.Content.ReadAsStringAsync();
+            var client = new HttpClient();
 
-            //        listOfBanks = JsonConvert.DeserializeObject<ListBanksDTO>(apiResponse);
-            //    }
-            //}
-
-            return new ApiResponse<ListBanksDTO>((int)HttpStatusCode.OK, "success", "")
+            var resultConfig = _configuration.Value;
+            // RequestMessage headers
+            var request = new HttpRequestMessage
             {
-                Data = (ListBanksDTO)reponse.Data
+                RequestUri = new Uri(resultConfig.Uri),
+                Method = HttpMethod.Get,
+                Headers =
+                {
+                    { resultConfig.ApiKey, resultConfig.ApiSecret }
+                },
             };
+
+            using var response = await client.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            if (response.IsSuccessStatusCode)
+            {
+                var res = await response.Content.ReadAsStringAsync();
+                var serializer = new JsonSerializer();
+                using var stringReader = new StringReader(res);
+                using (var jsonReader = new JsonTextReader(stringReader))
+                {
+                    jsonReader.SupportMultipleContent = true;
+                    ListBanksDTO result = serializer.Deserialize<ListBanksDTO>(jsonReader);
+                    return new ApiResponse<ListBanksDTO>((int)response.StatusCode, "success", "")
+                    {
+                        Data = result
+                    };
+                };
+            }
+            throw new Exception("Server Error");
+
+
         }
     }
 }
